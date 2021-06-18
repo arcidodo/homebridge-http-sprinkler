@@ -22,6 +22,7 @@ function HttpSprinkler(log, config) {
   this.statusUrl = config.statusUrl;
 
   this.httpMethod = config.httpMethod || "GET";
+  this.statehttpMethod = config.httpMethod || "GET";
   this.timeout = config.timeout || 5000;
   this.pollingInterval = config.pollingInterval || 3000;
   this.checkStatus = config.checkStatus || "no";
@@ -164,7 +165,7 @@ HttpSprinkler.prototype = {
       this.log("Setting power state to off");
     }
 
-    this.httpRequest(url, "", this.httpMethod, function(error, response, body) {
+    this.httpRequest(url, "", this.statehttpMethod, function(error, response, body) {
       if (error) {
         that.log("HTTP set status function failed %s", error.message);
       }
@@ -200,7 +201,7 @@ HttpSprinkler.prototype = {
       this.log("Setting power state to off");
     }
 
-    this.httpRequest(url, "", this.httpMethod, function(error, response, body) {
+    this.httpRequest(url, "", this.statehttpMethod, function(error, response, body) {
       if (error) {
         that.log("HTTP set status function failed %s", error.message);
       }
